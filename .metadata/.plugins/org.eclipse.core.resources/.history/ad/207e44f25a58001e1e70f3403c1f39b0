@@ -9,7 +9,6 @@ import lombok.Setter;
 @Setter 
 public class SangheeDao {
 	
-	private int count;
 
 		
 	public SangheeDao(@Value("31") int count) {

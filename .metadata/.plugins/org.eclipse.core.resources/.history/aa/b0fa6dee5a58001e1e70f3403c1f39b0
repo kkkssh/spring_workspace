@@ -10,7 +10,16 @@ import lombok.Setter;
 public class SangheeDao {
 	
 	private int count;
-
+	@Value("22")
+	public void setCount(int count) {
+		 System.out.println("★★ ProductDao setter 메소드 ★★"); 
+		 this.count = count; 
+		 }
+	
+	//3) 기본생성자 정의
+//	public SangheeDao() {
+//		System.out.println("::::: SangheeDao 기본 생성자 :::::");
+//	}
 		
 	public SangheeDao(@Value("31") int count) {
 		System.out.println("★★ SangheeDao 생성자 - int value 전달 ★★");
