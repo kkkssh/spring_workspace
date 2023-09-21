@@ -1,0 +1,86 @@
+### Spring Tool Suite 4 (IDE) 버전을 설치
+
+File - New 메뉴 에서 선택하는 프로젝트 유형
+1. Maven Project : 기존 프로젝트 생성방식과 동일 Maven 빌드환경으로 만드는 프로젝트
+2. Dynamic Web Project : 웹애플리케이션 프로젝트 (Maven 적용되지 않은 상태)
+3. Spring Starter Project :  스프링 부트 프로젝트 
+- spring 프레임워크가 적용되기 위해 필요한 과정(설정)을 자동으로 지원하는 기능을 포함
+
+
+### Day1 : Maven Project + spring 라이브러리 추가
+1) pom.xml 의존성 확인하기
+spring-context 추가 - 버전 5.2.22.RELEASE
+		spring-context 와 의존관계인 라이브러리는 알아서 추가됨
+		ㄴ spring-aop
+		ㄴ spring-beans
+		ㄴ spring-core
+		ㄴ spring-expression
+		ㄴ spring-jcl
+
+2) 폴더 구조
+* 애플리케이션의 프로덕트(산출물) 코드
+src/main/java
+src/main/resources ( - 설정파일 xml 등등 포함)
+			ㄴ 로깅을 위한 설정파일 log4j.xml 
+			ㄴ META-INF : 메타 정보를 저장하는 폴더(마이바티스 설정파일 등등)
+* 테스트 코드
+src/test/java
+src/test/resources
+
+* target 폴더 : 빌드된 .class 가 저장되는 폴더
+
+3) 소스 설명
+* org.iclass.java 패키지 코드 : 기존 자바 코드의 의존 관계 객체 생성 방식
+* org.iclass.di 패키지 코드 : spring 의존관계의 빈 주입 방식
+
+4) 의존 관계 자동 주입
+- 빈을 생성할 대상 패키지 설정 : BuyConfig.java => @Configuration , @ComponentScan
+- 스프링이 빈으로 만들 클래스 애노테이션 : @Component
+- 실행 목표 : Buy2Controller 의 buy 메소드 실행.
+- 첫번째 org.iclass.di 패키지에서 생성자 자동 주입을 했다. => 커스텀 생성자
+				ㄴ 생성자 주입은 자동 주입 애노테이션 @Autowired 를 생략하고 작성 안함
+- 두번째 org.iclass.di2 패키지에서 setter 자동 주입을 했다. => 기본 생성자 + setter
+- 세번째 필드 주입 : 스프링 권고 사항으로는 사용하지 않는다. 테스트 코드에서만 사용
+		의존 관계 변수 선언부에 @Autowired 작성하면 필드 주입이다.
+		
+** 확인할 것 : 커스텀 생성자가 동작한 후, 
+			만약 setter 에 @Autowired 가 있다면 setter 주입을 또 한다.
+			
+   --> 결론은 의존 관계에 있는 필드는 final 로 선언해서 2가지 방법 중 하나만 사용하도록
+       문법적으로 결정한다.
+		
+** 자동 주입은 타입이 맞는 것을 주입하는 것이다.(타입 기반)
+   스프링빈의 기본은 싱글톤이다.
+   컨트롤러, 서비스, dao 는 기능만 있는 클래스에서는 객체가 여러개가 필요 없다.
+   혹시 타입이 같은 것이 여러개 있을 때 이름으로 지정할 수 있다. 그 때 사용하는 애노테이션은? @Qualifier
+   기본적인 빈의 이름을 바꿀 수 있다. 그 때 사용하는 방법은? @Component 어노테이션과 함께 value 속성을 사용하여 새로운 이름을 지정할 수 있다.
+
+** 자동주입에서 의존 관계 타입을 인터페이스로 한다. (-> 느슨한 결합)
+
+** jsp의 빈은 데이터 객체
+
+#### 새로운 프로젝트를 직접 만들어서 연습하기
+
+  프로젝트 생성
++ File - New - Maven Project(other에서 찾기)
+
+		[x] Create a simple project 체크하기
+		groupId(도메인네임 즉 패키지명) - org.iclass
+		artifactId(산출물 즉 jar 파일명) 작성 - myspringex1
+		
++ java 버전 확인 : build path 에서 라이브러리, project facets, java compiler 와 동일하게
++ pom.xml : 
+		+ 기존 라이브러리 : lombok
+		+ 스프링 spring-context
+		
++ 실행은 컨트롤러의 product 메소드 실행을 하기 위해 의존 관계 주입을 연습하기.
+	1) 생성자 주입		2) setter 주입
+
+
+
+
+
+
+
+
+
