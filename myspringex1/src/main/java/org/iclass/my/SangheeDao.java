@@ -9,11 +9,10 @@ import lombok.Setter;
 @Setter 
 public class SangheeDao {
 	
-	private int count;
+	private final int count;
 
 		
-	public SangheeDao(@Value("31") int count) {
-		System.out.println("★★ SangheeDao 생성자 - int value 전달 ★★");
+	public SangheeDao(@Value("31") int count) {	
 		this.count=count;
 	}
 	
