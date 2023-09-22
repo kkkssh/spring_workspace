@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- mybatis가 데이터베이스에 연결하기 위한 설정(config)파일
+https://mybatis.org/mybatis-3/ko/getting-started.html 참고
+ -->
+<configuration>  
+	<!-- 리턴,파라미터 타입에 사용할 vo 클래스 등의 별칭-->
+ 	<typeAliases>
+		 <typeAlias type="org.iclass.dto.Community" alias="Community"/>
+	 </typeAliases>
+
+		<!-- 마이바티스 기본날짜 타입 Date 입니다. 이를 LocalDate로 변경합니다.-->
+     <typeHandlers>
+          <typeHandler handler="org.apache.ibatis.type.LocalDateTypeHandler"/>
+       </typeHandlers>
+</configuration>
+
+
