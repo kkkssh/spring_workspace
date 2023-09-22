@@ -47,8 +47,8 @@ class TodoMapperTest {
    @Test
    @DisplayName("다양한 조건으로 검색합니다.")
    void search() {
-//	   PageRequestDTO pageRequestDTO = PageRequestDTO.of(1, 5, new String[] {"t","w"},"매퍼",false,null,null);
-	   PageRequestDTO pageRequestDTO = PageRequestDTO.of(1, 5, null, null, false, 
+//	   PageRequestDTO pageRequestDTO = PageRequestDTO.of(1, 5, new String[] {"t","w"},"공부",false,null,null);
+	   PageRequestDTO pageRequestDTO = PageRequestDTO.of(1, 30, null, null, false, 
 			   				LocalDate.of(2023, 9,29),LocalDate.of(2023, 10, 2));
 	   
 	   List<TodoDto> list = dao.selectPageList(pageRequestDTO);
