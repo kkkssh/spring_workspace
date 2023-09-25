@@ -62,7 +62,22 @@ public class CommunityController {
 	//			ㄴ POST 요청을 처리한 후에는 redirect 를 한다.
 	
 	@PostMapping("/update")
-	public void update(Community idx, int page, Model model) {
-		model.addAttribute("vo",service.update(idx));
+	public void update(long idx, int page, Model model) {
+		model.addAttribute("vo",service.selectByIdx(idx));
+	}
+	
+	@PostMapping("/save")
+	public String updateAction(@ModelAttribute("page") int page, Community vo) {
+		service.update(vo);
+		
+		return "redirect:/community/list?page="+page;
+		
+	}
+	
+	@PostMapping("/delete")
+	public String delete(@ModelAttribute("page") int page, Long idx) {
+		service.delete(idx);
+		
+		return "redirect:/community/list";
 	}
 }
