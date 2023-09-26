@@ -15,10 +15,11 @@
 			<h3>북챗 :: 커뮤니티</h3>
 			<p>오늘 무슨 책을 읽으셨나요? </p>
 			<hr style="color:white;">
-<form name="frm1" method="post" action="updateAction.jsp" >  
+<form name="frm1" method="post" action="save" >  
 						<!--onsubmit="return isValid()" 방법도 있음.  -->
 	<input type="hidden" name="idx" value="${vo.idx }">
 	<input type="hidden" name="page" value="${page}">    
+	<input type="hidden" name="ip" value="${pageContext.request.remoteAddr}">    
 	<!-- 현재페이지 번호 전달 - 순서5) post 로 전달해야 하므로 hidden type으로 저장 -->
  <table>
  	<tr><th>제목</th>
@@ -63,6 +64,7 @@
  </form>
 </main> 
 <script type="text/javascript">
+if('${message}'.length !=0) alert('${message}');
 	function isValid(){
 		let result = true			//유효성 검사 결과 저장
 		const content = document.forms[0].content		//input 요소 지정
