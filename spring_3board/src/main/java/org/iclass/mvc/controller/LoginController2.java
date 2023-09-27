@@ -11,28 +11,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
-//방법2 : HttpSession 사용
+
+//방법 2 : HttpSession 사용
 //@Controller
 @RequiredArgsConstructor
-
 public class LoginController2 {
 	private final BookUserService service;
 
 	@GetMapping("/login")    
-	public void login() {	//login.jsp 뷰로 요청 전달
-	}
+	public void login() {	//login.jsp View로 요청 전달
+	}	
 	
-	@PostMapping("/login")  //POST 요청일때 @PostMapping. param 에 저장되는 것은 id 와 pw
+	@PostMapping("/login")  //POST 요청일때 @PostMapping. param 에 id 와 pw 저장
 	public String loginProc(@RequestParam Map<String,String> param,
 			RedirectAttributes reattr,
 			Model model,
 			HttpSession session){
-
 		String url="/";		//계정정보가 일치할때 context path(index)로 이동
 		BookUser member = service.login(param);
 		if(member==null) {	
@@ -45,9 +43,10 @@ public class LoginController2 {
 	}
 
 	@GetMapping("logout")
-	public String logout(HttpSession session) {	
-		session.invalidate();		//session 무효화. 브라우저 쿠키 JSESSON0
+	public String logout(HttpSession session) {		
+		session.invalidate();		//session 무효화. 브라우저 쿠키 JSESSIONID 가 삭제
 		return "redirect:/";
 	}
-
+	
+	
 }

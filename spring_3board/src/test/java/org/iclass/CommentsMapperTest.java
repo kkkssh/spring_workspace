@@ -15,24 +15,26 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import lombok.extern.slf4j.Slf4j;
 
-@ExtendWith(SpringExtension.class)		//테스트 클래스 기능을 위한 애노테이션
-@ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@DisplayName("Comments 구현체 생성확인")
+@ExtendWith(SpringExtension.class)								
+//▼ MybatisConfig.java 에서 @Bean 을 전부 지워야 사용 가능 ▼
+@ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/spring/root-context.xml")			//테스트 클래스에서 설정파일 가져오기
 @Slf4j
-public class CommentsMapperTest {
+class CommentsMapperTest {
+	
 	
 	@Autowired
-	CommunityCommentsMapper dao;
+	private CommunityCommentsMapper dao;
 	
-	@DisplayName("메인글 46번 - 댓글 리스트가 있습니다.")
+	@DisplayName("메인글 515번 - 댓글 리스트")
 	@Test
-	void cmtlist() {
-		List<CommunityComments> list = dao.commentsList(46);
-		log.info("메인글 46번 - 댓글 리스트 : {} ", list);
-		list.forEach(item -> {
-			log.info("item : {}",item);
-		});
+	void list() {
+		long idx = 515L;
+		List<CommunityComments> list = dao.commentsList(idx);
+		list.forEach(dto -> log.info("★★★★★★메인글 515번 - 댓글 리스트 : {}",dto));
+		
 		assertNotNull(list);
+		
 	}
-	
 
 }

@@ -53,6 +53,7 @@ if(temp!=null && temp.equals("w"))
   </form>
 </div>
   <script type="text/javascript">
+  if('${message}'.length !=0) alert('${message}');
   	console.log('${incorrect}')
   	if('${incorrect}'==='y')
   		document.getElementById('incorrect').style.display='inline-block'

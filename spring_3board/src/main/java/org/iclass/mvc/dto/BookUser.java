@@ -1,6 +1,6 @@
 package org.iclass.mvc.dto;
 
-import java.time.LocalDate;
+import java.sql.Timestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,8 +20,7 @@ public class BookUser {
 	private String name;
 	private String email;
 	private int age;
-	private LocalDate reg_date;
+	private Timestamp reg_date;
 	private String password;
-//	private String tel;
 
 }

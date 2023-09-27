@@ -7,6 +7,7 @@
 <title>커뮤니티 글쓰기</title>
 </head>
 <body>
-<a href="list">글목록</a>
+<a href="list">글목록</a><br>
+<a href="read">글읽기</a><br>
 </body>
 </html>

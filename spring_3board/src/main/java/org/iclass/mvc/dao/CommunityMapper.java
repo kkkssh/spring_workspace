@@ -14,9 +14,9 @@ public interface CommunityMapper {
 	void setReadCount(long idx);
 	//글 쓰기
 	int insert(Community vo);
-	//글 삭제
-	int delete(long idx);
 	//글 수정
 	int update(Community vo);
+	//글 삭제
+	int delete(long idx);
 	
 }

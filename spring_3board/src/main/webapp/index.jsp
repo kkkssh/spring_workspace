@@ -26,7 +26,7 @@
 </nav>
 <hr>
 <!--  -->
-<h3>mvc controller 테스트</h3>
+<h3>mvc controller test</h3>
 <a href="sample/list">샘플 리스트</a><br>
 <a href="sample/write">샘플 글쓰기</a><br>
 <a href="sample/read">샘플 글읽기</a><br>

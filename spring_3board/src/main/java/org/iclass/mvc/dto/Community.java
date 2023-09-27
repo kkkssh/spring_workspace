@@ -2,7 +2,6 @@ package org.iclass.mvc.dto;
 
 import java.sql.Timestamp;
 
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

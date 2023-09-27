@@ -7,6 +7,7 @@
 <title>커뮤니티 리스트</title>
 </head>
 <body>
-<a href="write">글쓰기</a>
+<a href="write">글쓰기</a><br>
+<a href="read">글읽기</a><br>
 </body>
 </html>

@@ -2,7 +2,7 @@ package org.iclass.mvc.service;
 
 import java.util.Map;
 
-import org.iclass.mvc.dao.BookUserMapper;
+import org.iclass.mvc.dao.BookuserMapper;
 import org.iclass.mvc.dto.BookUser;
 import org.springframework.stereotype.Service;
 
@@ -10,17 +10,18 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor(access = AccessLevel.PRIVATE)	//생성자 접근 권한
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)		//생성자 접근권한
 public class BookUserService {
+
+	private final BookuserMapper dao;
 	
-	private final BookUserMapper dao;
-	
-	public int join(BookUser dto) {
-		return dao.insert(dto);
-	}
-	
-	public BookUser login(Map<String, String> map) {
+	//로그인
+	public BookUser login(Map<String,String> map){
 		return dao.login(map);
+	}
+	//회원가입
+	public int join(BookUser dto) {
+		return dao.join(dto);
 	}
 	
 }

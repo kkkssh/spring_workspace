@@ -9,16 +9,15 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-  <!-- Listener : application context 가 시작될 때 동작하는 리스너 ContextLoaderListener -->
+  <!-- Listener : Application context 가 시작될 때 동작하는 리스너 ContextLoaderListener -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  <!-- ContextLoaderListener 동작 시 필요한 설정 : 애플리케이션 시작 시 필요한 bean 설정 -->
+  <!-- ContextLoaderListener 동작시 필요한 설정 : 애플리케이션 시작시 필요한 bean 설정 -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>/WEB-INF/spring/root-context.xml</param-value>
   </context-param>
-  
   <!-- 스프링 FrontController : DispatcherServlet -->
   <servlet>
     <servlet-name>appServlet</servlet-name>

@@ -4,8 +4,8 @@ import java.util.Map;
 
 import org.iclass.mvc.dto.BookUser;
 
-public interface BookUserMapper {
-	int insert(BookUser dto);
-	BookUser login(Map<String, String> map);
+public interface BookuserMapper {
 
+	BookUser login(Map<String, String> map);
+	int join(BookUser dto);
 }

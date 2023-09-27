@@ -51,10 +51,10 @@
 	<form action="" method="post">   <!-- action 은 자바스크립트에서 정합니다. -->
 			<input type="hidden" name="idx" value="${vo.idx}">
 			<input type="hidden" name="page" value="${page}">
-			<!-- <a class="button" href="javascript:execute(1)">수정</a> -->  <!-- GET 요청 자바스크립트 함수:인자값 1은 수정 -->
-			<!-- <a class="button" href="javascript:execute(2)">삭제</a>  --> <!-- GET 요청 자바스크립트 함수:인자값 2는 삭제  -->
-			<a class="button" href="javascript:formexecute(1)">수정</a>  <!-- POST요청 자바스크립트 함수:인자값 1은 수정 -->
-			<a class="button" href="javascript:formexecute(2)">삭제</a>  <!-- POST요청 자바스크립트 함수:인자값 2는 삭제  -->
+			<!-- <a class="button" href="javascript:execute(1)">수정</a> --> <!--  GET 요청 자바스크립트 함수:인자값 1은 수정 -->
+			<!-- <a class="button" href="javascript:execute(2)">삭제</a>  GET 요청 자바스크립트 함수:인자값 2는 삭제  -->
+			<a class="button" href="javascript:formexecute(1)">수정</a> <!--  POST요청 자바스크립트 함수:인자값 1은 수정 -->
+			<a class="button" href="javascript:formexecute(2)">삭제</a>  <!-- POST요청 자바스크립트 함수:인자값 2는 삭제 --> 
 			<a class="button" href="list?page=${page }">목록</a>   <!-- 현재페이지 번호 전달 - 순서3) -->
 	</form>
 	</div>
@@ -106,7 +106,7 @@
 	<!-- 필요한 파라미터.화면에는 표시안함. -->
 	<input type="hidden" name="mref" value="${vo.idx }">  <!-- 댓글 추가할 메인글의 idx(댓글테이블 mref.고정값)  -->
 	<input type="hidden" name="idx" value="0" >	<!-- 삭제할 댓글의 idx(고정값 아님)는 executeCmt 함수에서 설정  -->
-	<input type="hidden" name="ip" value="${pageContext.request.remoteAddr }" >	
+	<input type="hidden" name="ip" value=${pageContext.request.remoteAddr }>
 	<input type="hidden" name="f" value="0">   <!-- value가 1이면 등록, 2이면 삭제 -->
 	<input type="hidden" name="page" value="${page }">  <!-- 현재페이지 번호 전달 - 순서8) -->
 		<ul>
@@ -114,8 +114,9 @@
 				<ul class="row">
 					<li>작성자</li>	
 					<li>
-					<%-- <input name="writer" class="input" value="${user.id }" readonly></li> --%>	
 					<input name="writer" class="input">
+					<%-- <input name="writer" class="input" value="${user.id }" readonly> --%>
+					</li>	
 				</ul>
 			</li>
 			<li>
@@ -133,7 +134,7 @@
 							<c:if test="${sessionScope.user == null }">		
 								<button type="button" onclick="location.href='../login'">로그인</button>
 							</c:if>
-							<button type="button" onclick="executeCmt(1,0)">저장</button>
+								<button type="button" onclick="executeCmt(1,0)">저장</button>  
 					</li>
 				</ul>
 			</li>
@@ -155,8 +156,8 @@
 					<li><a href="javascript:executeCmt(2,'${cmt.idx }')">삭제</a></li>		
 								<!--  함수의 2번쨰 인자는 삭제할 댓글의 idx-->		
 				</c:if>	
-				<!-- 로그인 구현 전 임시 용도 -->
-				<li><a href="javascript:executeCmt(2,'${cmt.idx }')">삭제</a></li>
+					<!-- 로그인 구현 전 임시용도 -->
+					<li><a href="javascript:executeCmt(2,'${cmt.idx }')">삭제</a></li>		
 				</ul>
 			</li>
 			<li>
@@ -175,16 +176,13 @@
 				alert('글 내용은 필수 입력입니다.')
 				frm.content.focus()
 				return
-			}else {		
-	//			alert('댓글 등록이 완료되었습니다.')
+			}else {
 				frm.f.value = fval
 				frm.submit()		//댓글 저장
 			}
 		}else if(fval===2){
-			
 			const yn = confirm('댓글 삭제 하시겠습니까?')
 			if(yn) {
-	//			alert('댓글 삭제가 완료되었습니다.')
 				frm.f.value = fval
 				frm.idx.value = cidx
 				frm.submit()
@@ -194,7 +192,7 @@
 	}
 
 
-
+	
 
 
 </script>
